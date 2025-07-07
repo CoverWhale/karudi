@@ -1,0 +1,16 @@
+2025-06-30 11:22:44,060 - ERROR - ❌ Directory does not exist: data/processed/Wip
+2025-06-30 11:31:33,866 - ERROR - ❌ Specified date folder does not exist: data/processed/Wip/2025-06-20
+2025-07-01 06:23:44,461 - INFO - 📌 Loaded 2 policy numbers from data/processed/Policy/2025-06-20/Submissions_Policy_2025-03-14_segment.csv
+2025-07-01 06:23:59,874 - ERROR - ❌ Failed to fetch notes/documents for policy ID c77e8202-5944-464f-ad95-b0fecf3bfa03: 422 Client Error: Unprocessable Entity for url: https://gatewayservice.solartis.net/gateway/api/GetDiaryNotes
+2025-07-01 06:24:02,044 - ERROR - ❌ Failed to fetch notes/documents for policy ID b5e904cd-a03d-4563-8c71-6159b3e3c48d: 422 Client Error: Unprocessable Entity for url: https://gatewayservice.solartis.net/gateway/api/GetDiaryNotes
+2025-07-01 06:24:02,244 - INFO - ✅ Processed: 240600321510, ID: c77e8202-5944-464f-ad95-b0fecf3bfa03
+2025-07-01 06:24:15,454 - INFO - ✅ Processed: 230202609810, ID: b5e904cd-a03d-4563-8c71-6159b3e3c48d
+2025-07-01 06:24:22,188 - INFO - 🎉 Done processing policys. Total: 2, Added: 2
+2025-07-01 06:24:23,918 - INFO - ✅ Script completed successfully.
+2025-07-01 18:31:21,267 - INFO - 📌 Loaded 2 policy numbers from data/processed/Policy/2025-06-20/Submissions_Policy_2025-03-14_segment.csv
+2025-07-01 18:31:25,419 - ERROR - ❌ Failed to fetch notes/documents for policy ID c77e8202-5944-464f-ad95-b0fecf3bfa03: 422 Client Error: Unprocessable Entity for url: https://gatewayservice.solartis.net/gateway/api/GetDiaryNotes
+2025-07-01 18:31:25,420 - INFO - ✅ Processed: 240600321510, ID: c77e8202-5944-464f-ad95-b0fecf3bfa03
+2025-07-01 18:31:25,427 - ERROR - ❌ Failed to fetch notes/documents for policy ID b5e904cd-a03d-4563-8c71-6159b3e3c48d: 422 Client Error: Unprocessable Entity for url: https://gatewayservice.solartis.net/gateway/api/GetDiaryNotes
+2025-07-01 18:31:25,428 - INFO - ✅ Processed: 230202609810, ID: b5e904cd-a03d-4563-8c71-6159b3e3c48d
+2025-07-01 18:31:25,429 - INFO - 🎉 Done processing policys. Total: 2, Added: 2
+2025-07-01 18:31:25,429 - INFO - ✅ Script completed successfully.

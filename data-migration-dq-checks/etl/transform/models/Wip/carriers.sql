@@ -1,0 +1,46 @@
+CREATE VIEW if not exists solartis_wip_submissions.carriers AS (
+    SELECT 
+        JSONExtractString(json, 'SubmissionNumber') AS SubmissionNumber,
+        JSONExtractString(json, 'QuoteNumber') AS QuoteNumber,
+        JSONExtractString(json, 'PolicyNumber') AS PolicyNumber,
+        JSONExtractString(json, 'PolicySubNumber') AS PolicySubNumber,
+        JSONExtractString(json, 'EndorsementNumber') AS EndorsementNumber,
+        JSONExtractString(selected_carriers, 'CarrierName') AS SelectedCarriersCarrierName,
+        JSONExtractString(selected_carriers, 'PolicyNumber') AS SelectedCarriersPolicyNumber,
+        JSONExtractString(selected_carriers, 'PolicyEffectiveDate') AS SelectedCarriersPolicyEffectiveDate,
+        JSONExtractString(selected_carriers, 'PolicyExpirationDate') AS SelectedCarriersPolicyExpirationDate,
+        JSONExtractString(selected_carriers, 'State') AS SelectedCarriersState,
+        JSONExtractString(selected_carriers, 'PolicyTerm') AS SelectedCarriersPolicyTerm,
+        JSONExtractString(selected_carriers, 'PolicyCancellationDate') AS SelectedCarriersPolicyCancellationDate,
+        JSONExtractString(selected_sublines, 'SublineName') AS SelectedSublinesSublineName,
+        JSONExtractString(selected_sublines, 'PolicyEffectiveDate') AS SelectedSublinesPolicyEffectiveDate,
+        JSONExtractString(selected_sublines, 'PolicyExpirationDate') AS SelectedSublinesPolicyExpirationDate,
+        JSONExtractString(selected_sublines, 'PolicyTerm') AS SelectedSublinesPolicyTerm,
+        JSONExtractString(selected_sublines, 'PolicyCancellationDate') AS SelectedSublinesPolicyCancellationDate,
+        JSONExtractString(selected_carriers, 'PolicyStatus') AS SelectedCarriersPolicyStatus,
+        JSONExtractString(selected_carriers, 'TransactionType') AS SelectedCarriersTransactionType,
+        JSONExtractString(selected_carriers, 'PolicyType') AS SelectedCarriersPolicyType,
+        JSONExtractString(selected_carriers, 'EndorsementNumber') AS SelectedCarriersEndorsementNumber,
+        JSONExtractString(selected_carriers, 'PolicySubNumber') AS SelectedCarriersPolicySubNumber,
+        JSONExtractString(selected_carriers, 'LicenseType') AS SelectedCarriersLicenseType,
+        JSONExtractString(selected_carriers, 'PolicyFullNumber') AS SelectedCarriersPolicyFullNumber,
+        JSONExtractString(selected_sublines, 'SublineDisplayName') AS SublineDisplayName,
+        JSONExtractString(selected_sublines, 'CarrierCode') AS SelectedSublinesCarrierCode,
+        JSONExtractString(selected_carriers, 'CarrierAddress') AS SelectedCarriersCarrierAddress,
+        JSONExtractString(selected_carriers, 'AmbestRating') AS SelectedCarriersAmbestRating,
+        JSONExtractString(selected_carriers, 'CarrierCode') AS SelectedCarriersCarrierCode,
+        JSONExtractString(selected_carriers, 'CarrierDisplayName') AS SelectedCarriersCarrierDisplayName,
+        JSONExtractString(selected_carriers, 'AdmittedCarrier') AS SelectedCarriersAdmittedCarrier,
+        JSONExtractString(selected_carriers, 'CarrierType') AS SelectedCarriersCarrierType,
+        JSONExtractString(selected_carriers, 'IsSelectedFromLottery') AS SelectedCarriersIsSelectedFromLottery,
+        JSONExtractString(selected_carriers, 'IsOverrided') AS SelectedCarriersIsOverrided,
+        JSONExtractString(selected_carriers, 'PfcCarrierCode') AS SelectedCarriersPfcCarrierCode,
+        JSONExtractString(selected_carriers, 'PreferredCarrier') AS SelectedCarriersPreferredCarrier,
+        JSONExtractString(selected_carriers, 'SignatureName') AS SelectedCarriersSignatureName,
+        JSONExtractString(selected_carriers, 'SignatureTitle') AS SelectedCarriersSignatureTitle,
+        JSONExtractString(selected_carriers, 'SublineName') AS SelectedCarriersSublineName
+FROM solartis_wip_submissions.raw_submissions
+ARRAY JOIN JSONExtractArrayRaw(JSONExtractRaw(json, 'Account'), 'Insured') AS insured
+ARRAY JOIN JSONExtractArrayRaw(insured, 'SelectedSublines') AS selected_sublines
+ARRAY JOIN JSONExtractArrayRaw(selected_sublines, 'SelectedCarriers') AS selected_carriers
+)

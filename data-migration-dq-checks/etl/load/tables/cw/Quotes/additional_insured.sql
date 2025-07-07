@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS cw_migration_quotes.additional_insured (
+    SubmissionNumber String,
+    QuoteNumber String,
+    PolicyNumber String,
+    PolicySubNumber String,
+    EndorsementNumber String,
+    AdditionalInsuredName String,
+    AdditionalInsuredAddressStreetNumberAddress1 String,
+    AdditionalInsuredAddressStreetNameAddress2 String,
+    AdditionalInsuredAddressCity String,
+    AdditionalInsuredAddressCounty String,
+    AdditionalInsuredAddressStateRegionCode String,
+    AdditionalInsuredAddressStateRegion String,
+    AdditionalInsuredAddressCountryCode String,
+    AdditionalInsuredAddressCountry String,
+    AdditionalInsuredAddressZipcode1 String,
+    AdditionalInsuredAddressZipcode2 String,
+    AdditionalInsuredAddressFullAddress String,
+    AdditionalInsuredAddressAddressType String,
+    AdditionalInsuredCoverageStartDate String,
+    AdditionalInsuredChangeEffectiveDate String,
+    AdditionalInsuredCoverageStopDate String,
+    AdditionalInsuredChangeType String
+) ENGINE = MergeTree()
+ORDER BY SubmissionNumber;
