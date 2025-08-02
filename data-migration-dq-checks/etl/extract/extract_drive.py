@@ -13,9 +13,11 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Configuration
 GOOGLE_DRIVE_FOLDER_ID = '1PVsmoU5KTzM_qSEQcmoDfGFqft3ksh6a'  # Replace with actual folder ID
-SERVICE_ACCOUNT_FILE = 'assets/data-migration-dq-checks.json'  # Replace with actual path
+#SERVICE_ACCOUNT_FILE = 'assets/data-migration-dq-checks.json'  # Replace with actual path
+SERVICE_ACCOUNT_FILE = r'D:\Users\Kiran.Arudi\DMdqchecks\data-migration-dq-checks\assets\data-migration-dq-checks.json'
 
-ZIP_FILE_PATTERN = re.compile(r"migration_file_(\d{4}-\d{2}-\d{2})_segment_\d+\.zip")
+
+ZIP_FILE_PATTERN = re.compile(r"migration_file_(\d{4}-\d{2}-\d{2}).zip")
 
 # Define local storage paths
 DATA_DIR = "data"
@@ -90,15 +92,24 @@ def find_csv_files(base_path):
     data/python/migration/output/YYYY-MM-DD/model_type/*.csv
     Returns a list of tuples: (model_type, csv_file_path)
     """
+    # csv_files = []
+
+    # for root, dirs, files in os.walk(base_path):
+    #     if re.search(r"data\\extracted\\migration_file_\d{4}-\d{2}_segment_\d+\\(WIP|Quotes|Policy)", root):
+    #         model_type = os.path.basename(root)
+    #         for file in files:
+    #             if file.endswith(".csv"):
+    #                 full_path = os.path.join(root, file)
+    #                 csv_files.append((model_type, full_path))
+
     csv_files = []
 
     for root, dirs, files in os.walk(base_path):
-        if re.search(r"data/python/migration/output/\d{4}-\d{2}-\d{2}/(WIP|Quotes|Policy)", root):
-            model_type = os.path.basename(root)
-            for file in files:
-                if file.endswith(".csv"):
-                    full_path = os.path.join(root, file)
-                    csv_files.append((model_type, full_path))
+        for file in files:
+            if file.endswith('.csv'):
+                model_type = os.path.basename(root).lower()
+                full_path = os.path.join(root, file)
+                csv_files.append((model_type, full_path))
 
     return csv_files
 
